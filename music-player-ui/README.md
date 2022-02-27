@@ -1,1 +1,1 @@
-![music_player](music_player.png)
+![music_player](docs/music_player.png)
