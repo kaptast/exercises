@@ -21,7 +21,7 @@
 
       <MusicPlayerControls class="mb-10" />
 
-      <SongTimeline />
+      <SongTimeline :current-time="currentTime" :total-time="totalTime" />
     </div>
   </div>
 </template>
@@ -32,4 +32,15 @@ import MusicPlayerBranding from "./MusicPlayerBranding.vue";
 import BrandIcon from "./Icons/BrandIcon.vue";
 import SongData from "./SongData.vue";
 import SongTimeline from "./Timeline/SongTimeline.vue";
+
+defineProps({
+  currentTime: {
+    type: Number,
+    required: true,
+  },
+  totalTime: {
+    type: Number,
+    required: true,
+  },
+});
 </script>
