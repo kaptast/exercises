@@ -1,11 +1,15 @@
 <template>
-  <MusicPlayer :current-time="currentTime" :total-time="totalTime" />
+  <MusicPlayer v-bind="data" />
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
+import { reactive } from "vue";
 import MusicPlayer from "./MusicPlayer.vue";
 
-const currentTime = ref(34);
-const totalTime = ref(213);
+const data = reactive({
+  artist: "Sample artist",
+  songName: "Sample song",
+  totalTime: 213,
+  currentTime: 134,
+});
 </script>

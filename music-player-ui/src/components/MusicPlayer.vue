@@ -11,13 +11,15 @@
         </template>
 
         <template #default>
-          <div>Compnany name</div>
-          <div>|</div>
-          <div>Playlist name</div>
+          <div>Music player</div>
+          <template v-if="playlist">
+            <div>|</div>
+            <div>{{ playlist }}</div>
+          </template>
         </template>
       </MusicPlayerBranding>
 
-      <SongData class="mb-2" artist="Artist" song-name="test" />
+      <SongData class="mb-2" :artist="artist" :song-name="songName" />
 
       <MusicPlayerControls class="mb-10" />
 
@@ -41,6 +43,19 @@ defineProps({
   totalTime: {
     type: Number,
     required: true,
+  },
+  artist: {
+    type: String,
+    required: true,
+  },
+  songName: {
+    type: String,
+    required: true,
+  },
+  playlist: {
+    type: String,
+    required: false,
+    default: null,
   },
 });
 </script>
