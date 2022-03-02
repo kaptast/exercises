@@ -5,7 +5,7 @@
     </div>
 
     <div class="w-4">
-      <PreviousIcon />
+      <PreviousIcon @click="$emit('previous')" />
     </div>
 
     <div class="w-6">
@@ -13,7 +13,7 @@
     </div>
 
     <div class="w-4">
-      <NextIcon />
+      <NextIcon @click="$emit('next')" />
     </div>
   </div>
 </template>
@@ -24,4 +24,6 @@ import NextIcon from "./Icons/NextIcon.vue";
 import PreviousIcon from "./Icons/PreviousIcon.vue";
 import PlayIcon from "./Icons/PlayIcon.vue";
 import PauseIcon from "./Icons/PauseIcon.vue";
+
+defineEmits(["next", "previous"]);
 </script>

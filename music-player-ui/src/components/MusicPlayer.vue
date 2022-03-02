@@ -21,7 +21,11 @@
 
       <SongData class="mb-2" :artist="artist" :song-name="songName" />
 
-      <MusicPlayerControls class="mb-10" />
+      <MusicPlayerControls
+        class="mb-10"
+        @next="$emit('next')"
+        @previous="$emit('previous')"
+      />
 
       <SongTimeline :current-time="currentTime" :total-time="totalTime" />
     </div>
@@ -58,4 +62,6 @@ defineProps({
     default: null,
   },
 });
+
+defineEmits(["next", "previous"]);
 </script>
