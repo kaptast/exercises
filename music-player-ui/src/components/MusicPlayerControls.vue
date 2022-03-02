@@ -8,8 +8,9 @@
       <PreviousIcon @click="$emit('previous')" />
     </div>
 
-    <div class="w-6">
-      <PauseIcon />
+    <div class="flex h-6 w-7 items-center" @click="$emit('play')">
+      <PauseIcon v-if="playing" />
+      <PlayIcon v-else />
     </div>
 
     <div class="w-4">
@@ -25,5 +26,12 @@ import PreviousIcon from "./Icons/PreviousIcon.vue";
 import PlayIcon from "./Icons/PlayIcon.vue";
 import PauseIcon from "./Icons/PauseIcon.vue";
 
-defineEmits(["next", "previous"]);
+defineProps({
+  playing: {
+    type: Boolean,
+    required: true,
+  },
+});
+
+defineEmits(["next", "previous", "play"]);
 </script>

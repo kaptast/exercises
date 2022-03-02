@@ -23,8 +23,10 @@
 
       <MusicPlayerControls
         class="mb-10"
+        :playing="playing"
         @next="$emit('next')"
         @previous="$emit('previous')"
+        @play="$emit('play')"
       />
 
       <SongTimeline :current-time="currentTime" :total-time="totalTime" />
@@ -61,7 +63,11 @@ defineProps({
     required: false,
     default: null,
   },
+  playing: {
+    type: Boolean,
+    required: true,
+  },
 });
 
-defineEmits(["next", "previous"]);
+defineEmits(["next", "previous", "play"]);
 </script>

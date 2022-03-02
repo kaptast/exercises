@@ -1,5 +1,10 @@
 <template>
-  <MusicPlayer v-bind="data" @next="next" @previous="previous" />
+  <MusicPlayer
+    v-bind="data"
+    @next="next"
+    @previous="previous"
+    @play="data.playing = !data.playing"
+  />
 </template>
 
 <script setup lang="ts">
@@ -12,6 +17,7 @@ const data = reactive({
   songName: "",
   totalTime: 0,
   currentTime: 0,
+  playing: true,
 });
 
 generateRandomSongData();
@@ -27,6 +33,10 @@ function previous(): void {
 }
 
 function playSong(): void {
+  if (!data.playing) {
+    return;
+  }
+
   if (data.currentTime >= data.totalTime) {
     return next();
   }
