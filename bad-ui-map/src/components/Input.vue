@@ -24,7 +24,7 @@
   const emit = defineEmits(['updateLocation'])
 
   function tryToUpdateLocation(): void {
-    if (inputText.value.toLowerCase() === 'update') {
+    if (inputText.value.trim().toLowerCase() === 'update') {
       inputText.value = ''
       emit('updateLocation')
     }
