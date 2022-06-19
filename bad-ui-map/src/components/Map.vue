@@ -16,7 +16,7 @@
   import { LMap, LTileLayer, LMarker } from '@vue-leaflet/vue-leaflet'
   import { ref } from 'vue'
 
-  const zoom = ref(8)
+  const zoom = ref(17)
 
   defineProps<{
     lat: number
