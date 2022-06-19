@@ -1,21 +1,33 @@
-<script setup lang="ts">
-// This starter template is using Vue 3 <script setup> SFCs
-// Check out https://vuejs.org/api/sfc-script-setup.html#script-setup
-import HelloWorld from './components/HelloWorld.vue'
-</script>
-
 <template>
-  <img alt="Vue logo" src="./assets/logo.png" />
-  <HelloWorld msg="Hello Vue 3 + TypeScript + Vite" />
+  <div class="relative">
+    <Map v-bind="currentLocation" />
+    <Input @update-location="updateLocation()" />
+  </div>
 </template>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
+<script setup lang="ts">
+  import Map from './components/Map.vue'
+  import Input from './components/Input.vue'
+  import { onActivated, onMounted, reactive } from 'vue'
+
+  const currentLocation = reactive({
+    lat: 0,
+    lon: 0,
+  })
+
+  function updateLocation(): void {
+    navigator.geolocation.getCurrentPosition(
+      (pos) => {
+        currentLocation.lat = pos.coords.latitude
+        currentLocation.lon = pos.coords.longitude
+      },
+      (err) => {
+        console.error(err)
+      }
+    )
+
+    console.log(currentLocation)
+  }
+
+  onMounted(() => setTimeout(() => updateLocation(), 500))
+</script>
