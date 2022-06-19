@@ -25,8 +25,6 @@
         console.error(err)
       }
     )
-
-    console.log(currentLocation)
   }
 
   onMounted(() => setTimeout(() => updateLocation(), 500))
