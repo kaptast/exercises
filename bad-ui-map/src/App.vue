@@ -1,7 +1,7 @@
 <template>
-  <div class="relative">
-    <Map v-bind="currentLocation" />
-    <Input @update-location="updateLocation()" />
+  <div class="lg:relative flex flex-col">
+    <Input @update-location="updateLocation()" class="order-1 md:order-2" />
+    <Map v-bind="currentLocation" class="order-2 md:order-1" />
   </div>
 </template>
 
