@@ -9,19 +9,13 @@
         attr
       ></l-tile-layer>
       <l-marker :lat-lng="[lat, lon]"></l-marker>
-      <l-control-attribution position="topright" />
     </l-map>
   </div>
 </template>
 
 <script setup lang="ts">
   import 'leaflet/dist/leaflet.css'
-  import {
-    LMap,
-    LTileLayer,
-    LMarker,
-    LControlAttribution,
-  } from '@vue-leaflet/vue-leaflet'
+  import { LMap, LTileLayer, LMarker } from '@vue-leaflet/vue-leaflet'
   import { ref } from 'vue'
 
   const zoom = ref(17)

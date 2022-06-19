@@ -1,5 +1,5 @@
 <template>
-  <div class="lg:relative flex flex-col h-screen w-screen">
+  <div class="app lg:relative flex flex-col md:h-screen w-screen">
     <Input @update-location="updateLocation()" class="order-1 md:order-2" />
     <Map v-bind="currentLocation" class="order-2 md:order-1" />
   </div>
@@ -27,5 +27,19 @@
     )
   }
 
-  onMounted(() => setTimeout(() => updateLocation(), 500))
+  onMounted(() => {
+    setTimeout(() => updateLocation(), 500)
+
+    const vh = window.innerHeight * 0.01
+    document.documentElement.style.setProperty('--vh', `${vh}px`)
+  })
 </script>
+
+<style scoped>
+  @media screen and (max-width: 1023px) {
+    .app {
+      height: 100vh;
+      height: calc(var(--vh, 1vh) * 100);
+    }
+  }
+</style>
